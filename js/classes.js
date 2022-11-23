@@ -17,22 +17,50 @@ class Sprite {
 }
 
 class Fighter {
-    constructor({position, velocity}) {
+    constructor({position, velocity, color, offset}) {
         this.position = position;
         this.velocity = velocity;
+        this.width = 50;
         this.lastKey;
         this.height = 150;
+        this.attackBox = {
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            offset,
+            width: 100,
+            height: 50
+        };
+        this.color = color;
+        this.isAttacking = false;
     }
 
     // Builds character on canvas
     draw() {
-        context.fillStyle = 'red';
-        context.fillRect(this.position.x, this.position.y, 50, this.height);
+        context.fillStyle = this.color;
+        context.fillRect(this.position.x, this.position.y, this.width, this.height);
+
+        // Creates character attack box when attacking
+        if (this.isAttacking) {
+            context.fillStyle = 'green';
+            context.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
+        }
+    }
+
+    attack() {
+        this.isAttacking = true;
+        setTimeout(() => {
+            this.isAttacking = false;
+        }, 100);
     }
 
     // Update character position
     update() {
         this.draw();
+
+        this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
+        this.attackBox.position.y = this.position.y;
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;

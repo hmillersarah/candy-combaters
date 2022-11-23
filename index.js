@@ -26,6 +26,11 @@ const player = new Fighter({
     velocity: {
         x: 0,
         y: 0
+    },
+    color: 'red',
+    offset: {
+        x: 0,
+        y: 0
     }
 });
 
@@ -37,6 +42,11 @@ const enemy = new Fighter({
     },
     velocity: {
         x: 0,
+        y: 0
+    },
+    color: 'blue',
+    offset: {
+        x: -50,
         y: 0
     }
 });
@@ -54,6 +64,16 @@ const keys = {
     ArrowLeft: {
         pressed: false
     }
+}
+
+// Determines if a player's attack box has collided with the other player
+function rectangularCollision({rectangle1, rectangle2}) {
+    return (
+        rectangle1.attackBox.position.x + rectangle1.attackBox.width >= rectangle2.position.x 
+        && rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width
+        && rectangle1.attackBox.position.y + rectangle1.attackBox.height >= rectangle2.position.y
+        && rectangle1.attackBox.position.y <= rectangle2.position.y + enemy.height
+    )
 }
 
 // Loops canvas frames for animation
@@ -83,6 +103,18 @@ function animate() {
     } else if (keys.ArrowRight.pressed && enemy.lastKey == 'ArrowRight') {
         enemy.velocity.x = 5;
     }
+
+    // Detect for player collision
+    if (rectangularCollision({rectangle1: player, rectangle2: enemy}) && player.isAttacking) {
+        player.isAttacking = false;
+        console.log('go')
+    }
+
+    if (rectangularCollision({rectangle1: enemy, rectangle2: player}) && enemy.isAttacking) {
+        enemy.isAttacking = false;
+        console.log('enemy attack sucessful')
+    }
+
 }
 
 animate();
@@ -102,6 +134,9 @@ window.addEventListener('keydown', (event) => {
         case 'w':
             player.velocity.y = -15;
             break;
+        case ' ':
+            player.attack()
+            break
 
         // Player 2 Controls
         case 'ArrowRight':
@@ -115,10 +150,13 @@ window.addEventListener('keydown', (event) => {
         case 'ArrowUp':
             enemy.velocity.y = -15;
             break;
+        case 'ArrowDown':
+            enemy.attack()
+            break;
     }
 })
 
-// Event listener forwhen keys are released
+// Event listener for when keys are released
 window.addEventListener('keyup', (event) => {
     // Player 1 Controls
     switch (event.key) {
