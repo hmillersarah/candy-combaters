@@ -104,16 +104,19 @@ function animate() {
         enemy.velocity.x = 5;
     }
 
-    // Detect for player collision
+    // Detect if Player 1 has been hit
     if (rectangularCollision({rectangle1: player, rectangle2: enemy}) && player.isAttacking) {
         player.isAttacking = false;
-        console.log('go')
+        enemy.health -= 20;
+        document.getElementById("enemyHealthBar").style.width = enemy.health + "%";
     }
 
+    // Detect if Player 2 has been hit
     if (rectangularCollision({rectangle1: enemy, rectangle2: player}) && enemy.isAttacking) {
         enemy.isAttacking = false;
-        console.log('enemy attack sucessful')
-    }
+        player.health -= 20;
+        document.getElementById("playerHealthBar").style.width = player.health + "%";
+    } 
 
 }
 

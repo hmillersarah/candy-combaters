@@ -1,6 +1,30 @@
-<canvas>
-
-</canvas>
-
-<script src="js/classes.js"></script>
-<script src="index.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <!-- red container div-->
+        <div id="container">
+            <!-- smaller red container div -->
+            <div id="subcontainer">
+                <!-- player health -->
+                <div class="healthWrapper" style="display: flex; justify-content: flex-end">
+                    <div class="healthContainer" style="width: 100%"></div>
+                    <div id="playerHealthBar"></div>
+                </div>
+                <!-- timer -->
+                <div id="timer"></div>
+                <!-- enemy health-->
+                <div class="healthWrapper">
+                    <div class="healthContainer"></div>
+                    <div id="enemyHealthBar"></div>
+                </div>
+            </div>
+            <canvas></canvas>
+        </div>
+        
+        <script src="js/classes.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

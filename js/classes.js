@@ -34,6 +34,7 @@ class Fighter {
         };
         this.color = color;
         this.isAttacking = false;
+        this.health = 100;
     }
 
     // Builds character on canvas
