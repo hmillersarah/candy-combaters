@@ -51,6 +51,17 @@ const enemy = new Fighter({
     }
 });
 
+// Shop
+const shop = new Sprite({
+    position: {
+        x: 600,
+        y: 128,
+    },
+    imageSrc: "./img/shop.png",
+    scale: 2.75,
+    frameMax: 6,
+})
+
 const keys = {
     a: {
         pressed: false
@@ -75,6 +86,7 @@ function animate() {
     context.fillRect(0, 0, canvas.width, canvas.height);
     
     background.update();
+    shop.update();
     player.update();
     enemy.update();
 

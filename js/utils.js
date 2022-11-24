@@ -22,7 +22,7 @@ function determineWinner({player, enemy, timerId}) {
 }
 
 // Decrements the timer by 1 for each second
-let timer = 10;
+let timer = 90;
 let timerId;
 function decreaseTimer() {
     timerId = setTimeout(decreaseTimer, 1000);
