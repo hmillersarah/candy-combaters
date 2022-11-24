@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    position: relative;
+    display: inline-block;
+}
+
+#subcontainer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+.healthWrapper {
+    width: 100%;
+    height: 30px;
+    position: relative;
+}
+
+.healthContainer {
+    background-color: yellow;
+    height: 30px;
+}
+
+#playerHealthBar {
+    position: absolute;
+    background: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#enemyHealthBar {
+    position: absolute;
+    background: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#timer {
+    font-family: fantasy;
+    color: white;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameOver {
+    font-size: 72px;
+    font-family: fantasy;
+    position: absolute;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
