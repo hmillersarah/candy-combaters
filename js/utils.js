@@ -8,29 +8,32 @@ function rectangularCollision({rectangle1, rectangle2}) {
     )
 }
 
-// Determines the winner after timer runs out or a player's health runs out
-function determineWinner({player, enemy, timerId}) {
+  // Determines the winner after timer runs out or a player's health runs out
+function determineWinner({ player, enemy, timerId }) {
     clearTimeout(timerId)
-    if (player.health === enemy.health) {
-        document.getElementById("gameOver").innerHTML = "Tie";
-    } else if (player.health > enemy.health) {
-        document.getElementById("gameOver").innerHTML = "Player 1 Wins";
-    } else if (player.health < enemy.health) {
-        document.getElementById("gameOver").innerHTML = "Player 2 Wins";
-    }
-    document.getElementById("gameOver").style.display = "flex";
-}
+    document.querySelector('#displayText').style.display = 'flex'
 
-// Decrements the timer by 1 for each second
-let timer = 90;
-let timerId;
-function decreaseTimer() {
-    timerId = setTimeout(decreaseTimer, 1000);
-    if (timer > 0) {
-        timer--;
-        document.getElementById("timer").innerHTML = timer;
-    }
-    if (timer === 0) {
-        determineWinner({player, enemy, timerId});
+    if (player.health === enemy.health) {
+        document.querySelector('#displayText').innerHTML = 'Tie'
+    } else if (player.health > enemy.health) {
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins'
+    } else if (player.health < enemy.health) {
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins'
     }
 }
+  
+  // Decrements the timer by 1 for each second
+let timer = 30
+let timerId
+function decreaseTimer() {
+    if (timer > 0) {
+        timerId = setTimeout(decreaseTimer, 1000)
+        timer--
+        document.querySelector('#timer').innerHTML = timer
+    }
+  
+    if (timer === 0) {
+        determineWinner({ player, enemy, timerId })
+    }
+}
+  
