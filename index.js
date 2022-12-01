@@ -1,5 +1,5 @@
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = 1024;
 canvas.height = 576;
@@ -153,7 +153,7 @@ const keys = {
     }
 }
 
-decreaseTimer();
+// decreaseTimer();
 
 // Loops canvas frames for animation
 function animate() {
@@ -259,7 +259,7 @@ function animate() {
     }
   }
   
-  animate()
+  // animate()
 
 // Event listener for when keys are hit
 window.addEventListener('keydown', (event) => {
@@ -326,5 +326,29 @@ window.addEventListener('keyup', (event) => {
             break;
     }
 })
+
+function erase() {
+  c.fillStyle = '#f25a97';
+  c.fillRect(0, 0, 1024, 576);
+}
+
+// Show the start menu
+function menu() {
+  erase();
+  c.fillStyle = '#fff';
+  c.font = '36px monospace';
+  c.textAlign = 'center';
+  c.fillText('Candy Combaters', canvas.width / 2, canvas.height / 4);
+  c.font = '24px monospace';
+  c.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
+  c.font = '18px monospace'
+  c.fillText('Player 1: Use A W D letter keys to move and S to attack', canvas.width / 2, (canvas.height / 4) * 3);
+  c.fillText('Player 2: Use arrow keys to move and arrow down to attack', canvas.width / 2, (canvas.height / 4) * 3.2);
+  // Start the game on a click
+  canvas.addEventListener('click', animate);
+}
+
+menu();
+
 
 

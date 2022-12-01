@@ -72,3 +72,7 @@
     left: 0;
     display: none;
 }
+
+.textFont {
+    font-family: 'Press Start 2P', cursive;
+}
