@@ -8,27 +8,30 @@ function rectangularCollision({rectangle1, rectangle2}) {
     )
 }
 
-  // Determines the winner after timer runs out or a player's health runs out
+// Determines the winner after timer runs out or a player's health runs out
 function determineWinner({ player, enemy, timerId }) {
-    clearTimeout(timerId)
-    document.querySelector('#displayText').style.display = 'flex'
+    clearTimeout(timerId);
+    document.querySelector('#displayText').style.display = 'flex';
 
     if (player.health === enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Tie'
+        document.querySelector('#displayText').innerHTML = 'Tie';
     } else if (player.health > enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Player 1 Wins'
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
     } else if (player.health < enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Player 2 Wins'
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
     }
 }
-  
-  // Decrements the timer by 1 for each second
-let timer = 30
-let timerId
+
+// Default time
+let timer = 30;
+let timerId;
+
+// Update time based on difficulty
 function setTime(time) {
     timer = time;
 }
 
+// Decrements the timer by 1 for each second
 function decreaseTimer() {
     if (timer > 0) {
         timerId = setTimeout(decreaseTimer, 1000)

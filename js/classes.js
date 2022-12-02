@@ -1,3 +1,4 @@
+// Sprite class
 class Sprite {
     constructor({position, imageSrc, scale = 1, framesMax = 1, offset = {x: 0, y: 0}}) {
         this.position = position;
@@ -18,6 +19,7 @@ class Sprite {
         this.offset = offset;
     }
 
+    // Sets image crop region and actual image dimensions
     draw() {
         c.drawImage(
             this.image, 
@@ -36,6 +38,7 @@ class Sprite {
         );
     }
 
+    // Change current frame in crop region
     animateFrames() {
         this.framesElapsed++;
 
@@ -49,6 +52,7 @@ class Sprite {
         }
     }
 
+    // Creates loop animation
     update() {
         this.draw();
         // Continuously increases
@@ -56,6 +60,7 @@ class Sprite {
     }
 }
 
+//Fighter class
 class Fighter extends Sprite {
     constructor({
         position, 
@@ -75,13 +80,17 @@ class Fighter extends Sprite {
             offset
         })
         this.velocity = velocity;
+        // Stores lass pressed key
         this.lastKey;
         this.height = 150;
+        // Same functionality as sprite class
         this.framesCurrent = 0;
         this.framesElapsed = 0;
         this.framesHold = 5;
+        // All sprite actions of fighter
         this.sprites = sprites;
         this.dead = false;
+        // Attack target detection box
         this.attackBox = {
             position: {
               x: this.position.x,
@@ -94,6 +103,7 @@ class Fighter extends Sprite {
         this.isAttacking;
         this.health = 100;
 
+        // Loop through all sprites and sets sprite PNG to action
         for (const sprite in this.sprites) {
             sprites[sprite].image = new Image();
             sprites[sprite].image.src = sprites[sprite].imageSrc
@@ -103,10 +113,12 @@ class Fighter extends Sprite {
     // Update character position
     update() {
         this.draw();
+        // Continue animating if the player has not died
         if (!this.dead) {
             this.animateFrames();
         }
 
+        // Update position when a player moves
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
@@ -124,11 +136,13 @@ class Fighter extends Sprite {
         }
     }
   
+    // Switch to attack sprite
     attack() {
       this.switchSprite('attack1')
       this.isAttacking = true
     }
   
+    // Reduce health and switch to takeHit sprite
     takeHit() {
       this.health -= 20
   
@@ -137,6 +151,7 @@ class Fighter extends Sprite {
       } else this.switchSprite('takeHit')
     }
   
+    // Switch case to update current sprite animation
     switchSprite(sprite) {
     // Overriding all other animations if fighter dies
       if (this.image === this.sprites.death.image) {
