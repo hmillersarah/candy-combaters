@@ -32,7 +32,7 @@ const shop = new Sprite({
 // Player 1
 const player = new Fighter({
     position: {
-        x: 100,
+        x: 300,
         y: 0
     },
     velocity: {
@@ -41,30 +41,32 @@ const player = new Fighter({
     },
     imageSrc: './img/samuraiMack/Idle.png',
     framesMax: 8,
-    scale: 2.5,
+    scale: 0.15,
     offset: {
         x: 215,
-        y: 157
+        y: 10
+        // x: 215,
+        // y: 60
     },
      sprites: {
         idle: {
-            imageSrc: './img/samuraiMack/Idle.png',
-            framesMax: 8,
+            imageSrc: './img/player1/FinalIdleProtag.png',
+            framesMax: 6,
         },
         run: {
-            imageSrc: './img/samuraiMack/Run.png',
-            framesMax: 8,
+            imageSrc: './img/player1/FinalProtagRun.png',
+            framesMax: 6,
         },
         jump: {
-            imageSrc: './img/samuraiMack/Jump.png',
-            framesMax: 2,
+            imageSrc: './img/player1/finalProJump.png',
+            framesMax: 3,
         },
         fall: {
-            imageSrc: './img/samuraiMack/Fall.png',
+            imageSrc: './img/player1/finalProFall.png',
             framesMax: 2,
         },
         attack1: {
-            imageSrc: './img/samuraiMack/Attack1.png',
+            imageSrc: './img/player1/finalProAttack.png',
             framesMax: 6,
         },
         takeHit: {
