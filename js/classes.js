@@ -13,7 +13,7 @@ class Sprite {
         // How many frames till framesCurrent changes (slow down animation)
         // Ex: If framesHolde = 10, for every 10th frame, we loop through the animation
         // The smaller the value, the faster the animation
-        this.framesHold = 5;
+        this.framesHold = 20;
         // Offset image to override padding
         this.offset = offset;
     }

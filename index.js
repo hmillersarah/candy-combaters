@@ -332,20 +332,113 @@ function erase() {
   c.fillRect(0, 0, 1024, 576);
 }
 
+var easyRect = {
+  x: canvas.width / 3.5,
+  y: canvas.height / 2,
+  w: 100,
+  h: 50
+}
+
+var mediumRect = {
+  x: canvas.width / 2.22,
+  y: canvas.height / 2,
+  w: 100,
+  h: 50
+}
+
+var hardRect = {
+  x: canvas.width / 1.62,
+  y: canvas.height / 2,
+  w: 100,
+  h: 50
+}
+
 // Show the start menu
 function menu() {
   erase();
+
+  // Title
   c.fillStyle = '#fff';
   c.font = '36px monospace';
   c.textAlign = 'center';
   c.fillText('Candy Combaters', canvas.width / 2, canvas.height / 4);
+
+  // Click Start sub-heading
   c.font = '24px monospace';
-  c.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-  c.font = '18px monospace'
+  c.fillText('Click to Start', canvas.width / 2, canvas.height / 2.25);
+  c.font = '18px monospace';
+
+  // Button border styling
+  c.strokeStyle = '#fff'
+  c.lineWidth = 4;
+
+  // Difficulty buttons
+  // Easy
+  c.fillStyle = '#589ccd';
+  c.fillRect(easyRect.x, easyRect.y, easyRect.w, easyRect.h);
+  c.strokeRect(easyRect.x, easyRect.y, easyRect.w, easyRect.h);
+  c.fillStyle = '#fff';
+  c.fillText('Easy', canvas.width / 3, canvas.height / 1.8);
+
+  // Medium
+  c.fillStyle = '#589ccd';
+  c.fillRect(mediumRect.x, mediumRect.y, mediumRect.w, mediumRect.h);
+  c.strokeRect(mediumRect.x, mediumRect.y, mediumRect.w, mediumRect.h);
+  c.fillStyle = "#fff";
+  c.fillText('Medium', canvas.width / 2, canvas.height / 1.8);
+
+  // Hard
+  c.fillStyle = '#589ccd';
+  c.fillRect(hardRect.x, hardRect.y, hardRect.w, hardRect.h);
+  c.strokeRect(hardRect.x, hardRect.y, hardRect.w, hardRect.h);
+  c.fillStyle = "#fff";
+  c.fillText('Hard', canvas.width / 1.5, canvas.height / 1.8);
+
+  // Instructions
+  c.fillStyle = '#fff';
+  c.fillText('Instructions', canvas.width / 2, (canvas.height / 4) * 2.7);
   c.fillText('Player 1: Use A W D letter keys to move and S to attack', canvas.width / 2, (canvas.height / 4) * 3);
   c.fillText('Player 2: Use arrow keys to move and arrow down to attack', canvas.width / 2, (canvas.height / 4) * 3.2);
-  // Start the game on a click
-  canvas.addEventListener('click', animate);
+
+  // Start game when difficulty is clicked
+  canvas.addEventListener('click', checkStart, false);
+}
+
+function checkStart(e) {
+  var p = getMousePos(e);
+
+  if (
+    p.x >= easyRect.x && p.x <= easyRect.x + easyRect.w &&
+    p.y >= easyRect.y && p.y <= easyRect.y + easyRect.h
+  ) {
+    animate();
+  } else if (
+    p.x >= mediumRect.x && p.x <= mediumRect.x + mediumRect.w &&
+    p.y >= mediumRect.y && p.y <= mediumRect.y + mediumRect.h
+  ) {
+    animate();
+    setTime(30);
+    decreaseTimer();
+  } else if (
+    p.x >= hardRect.x && p.x <= hardRect.x + hardRect.w &&
+    p.y >= hardRect.y && p.y <= hardRect.y + hardRect.h
+  ) {
+    animate();
+    setTime(20);
+    decreaseTimer();
+  }
+  else {
+    menu();
+  }
+}
+
+// Return mouse position
+function getMousePos(e) {
+  var r = canvas.getBoundingClientRect();
+  return {
+      x: e.clientX - r.left,
+      y: e.clientY - r.top
+  };
 }
 
 menu();

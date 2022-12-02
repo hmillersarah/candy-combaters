@@ -25,6 +25,10 @@ function determineWinner({ player, enemy, timerId }) {
   // Decrements the timer by 1 for each second
 let timer = 30
 let timerId
+function setTime(time) {
+    timer = time;
+}
+
 function decreaseTimer() {
     if (timer > 0) {
         timerId = setTimeout(decreaseTimer, 1000)
