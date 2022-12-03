@@ -70,7 +70,7 @@ const player = new Fighter({
             framesMax: 2,
         },
         attack1: {
-            imageSrc: './img/finalProAttack.png',
+            imageSrc: './img/proAttack.png',
             framesMax: 6,
         },
         takeHit: {
