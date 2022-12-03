@@ -8,13 +8,31 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.7;
 
+// Creates a list of all special effects to be used in game
+const sfx = {
+  running: new Howl({
+    src: "./sound/running.mp3",
+    volume: 5
+  }),
+  jump: new Howl({
+    src: "./sound/jump.mp3",
+  }),
+  swordSwoosh: new Howl ({
+    src: "./sound/swordSwoosh.wav",
+  }),
+  death: new Howl ({
+    src: "./sound/death.mp3",
+  })
+}
+
 // Creates a list of all music to be used in game
 const music = {
+  startScreenSound: new Howl ({
+    src: "./sound/startScreenSound.mp3",
+  }),
   fightingScreenSound: new Howl({
-     src: [
-        "./sound/fightingScreenSound.mp3"
-     ],
-     loop: true
+     src: "./sound/fightingScreenSound.mp3",
+     volume: 0.6
   })
 }
 
@@ -297,7 +315,9 @@ function animate() {
   // End game if a player's health equals 0
   if (enemy.health <= 0 || player.health <= 0) {
     determineWinner({ player, enemy, timerId })
+    // sfx.death.play();
     
+    // Button border styling
     c.strokeStyle = '#fff'
     c.lineWidth = 4;
     
@@ -307,27 +327,7 @@ function animate() {
     c.strokeRect(restartRect.x, restartRect.y, restartRect.w, restartRect.h);
     c.fillStyle = "#fff";
     c.fillText('PLAY AGAIN', canvas.width / 2.02, canvas.height / 1.8);
-
   }
-}
-
-
-
-// RESTART GAME
-// _______________
-
-// Check if play again button has been clicked
-function restartGame(e) {
-  // Get current mouse position
-  var p = getMousePos(e);
-
-  if (
-    p.x >= restartRect.x && p.x <= restartRect.x + restartRect.w &&
-    p.y >= restartRect.y && p.y <= restartRect.y + restartRect.h
-  ) {
-    erase();
-    menu();
-  } 
 }
 
 // EVENT LISTENERS
@@ -339,17 +339,25 @@ window.addEventListener('keydown', (event) => {
     // Player 1 Controls
     switch (event.key) {
       case 'd':
+        if (!sfx.running.playing()) {
+          sfx.running.play();
+        }
         keys.d.pressed = true;
         player.lastKey = 'd';
         break;
       case 'a':
+        if (!sfx.running.playing()) {
+          sfx.running.play();
+        }
         keys.a.pressed = true;
         player.lastKey = 'a';
         break;
       case 'w':
+        sfx.jump.play();
         player.velocity.y = -15;
         break;
       case 's':
+        sfx.swordSwoosh.play();
         player.attack();
         break;
     }
@@ -359,17 +367,25 @@ window.addEventListener('keydown', (event) => {
     // Player 2 Controls
     switch(event.key) {
       case 'ArrowRight':
+        if (!sfx.running.playing()) {
+          sfx.running.play();
+        }
         keys.ArrowRight.pressed = true;
         enemy.lastKey = 'ArrowRight';
         break;
       case 'ArrowLeft':
+        if (!sfx.running.playing()) {
+          sfx.running.play();
+        }
         keys.ArrowLeft.pressed = true;
         enemy.lastKey = 'ArrowLeft';
         break;
       case 'ArrowUp':
+        sfx.jump.play();
         enemy.velocity.y = -15;
         break;
       case 'ArrowDown':
+        sfx.swordSwoosh.play();
         enemy.attack();
         break;
     }
@@ -437,6 +453,8 @@ var hardRect = {
 function menu() {
   erase();
 
+  music.startScreenSound.play();
+
   // Title
   c.fillStyle = '#fff';
   c.font = '36px monospace';
@@ -481,7 +499,7 @@ function menu() {
   c.fillText('Player 2: Use arrow keys to move and arrow down to attack', canvas.width / 2, (canvas.height / 4) * 3.2);
 
   // Start game when difficulty is clicked
-  canvas.addEventListener('click', checkStart, false);
+  canvas.addEventListener('click', checkStart, true);
 }
 
 // Check if difficulty mode has been clicked
@@ -494,27 +512,36 @@ function checkStart(e) {
     p.x >= easyRect.x && p.x <= easyRect.x + easyRect.w &&
     p.y >= easyRect.y && p.y <= easyRect.y + easyRect.h
   ) {
+    e.stopPropagation();
+    e.preventDefault();
     animate();
+    music.startScreenSound.stop();
     music.fightingScreenSound.play();
   // Medium button clicked
   } else if (
     p.x >= mediumRect.x && p.x <= mediumRect.x + mediumRect.w &&
     p.y >= mediumRect.y && p.y <= mediumRect.y + mediumRect.h
   ) {
+    e.stopPropagation();
+    e.preventDefault();
     animate();
     // Add timer
     setTime(30);
     decreaseTimer();
+    music.startScreenSound.stop();
     music.fightingScreenSound.play();
   // Hard button clicked
   } else if (
     p.x >= hardRect.x && p.x <= hardRect.x + hardRect.w &&
     p.y >= hardRect.y && p.y <= hardRect.y + hardRect.h
   ) {
+    e.stopPropagation();
+    e.preventDefault();
     animate();
     // Reduce timer to 20 seconds
     setTime(20);
     decreaseTimer();
+    music.startScreenSound.stop();
     music.fightingScreenSound.play();
   }
   // If buttons are not clicked, return to menu
