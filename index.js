@@ -39,7 +39,7 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './img/samuraiMack/Idle.png',
+    imageSrc: './img/finalIdle.png',
     framesMax: 8,
     // scale: 0.15,
     scale: 2.5,
@@ -52,7 +52,7 @@ const player = new Fighter({
      sprites: {
         idle: {
             // imageSrc: './img/player1/FinalIdleProtag.png',
-            imageSrc: './img/finalIdleProt.png',
+            imageSrc: './img/finalIdle.png',
             framesMax: 6,
         },
         run: {
