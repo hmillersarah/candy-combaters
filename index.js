@@ -8,6 +8,22 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.7;
 
+// Creates a list of all music to be used in game
+const music = {
+  buttonClick: new Howl({
+    src: [
+       "./sound/buttonClick.mp3"
+    ],
+    loop: false
+  }),
+  fightingScreenSound: new Howl({
+     src: [
+        "./sound/fightingScreenSound.mp3"
+     ],
+     loop: true
+  })
+}
+
 // BACKGROUND
 // _______________
 
@@ -444,25 +460,31 @@ function checkStart(e) {
     p.x >= easyRect.x && p.x <= easyRect.x + easyRect.w &&
     p.y >= easyRect.y && p.y <= easyRect.y + easyRect.h
   ) {
+    music.buttonClick.play();
     animate();
+    music.fightingScreenSound.play();
   // Medium button clicked
   } else if (
     p.x >= mediumRect.x && p.x <= mediumRect.x + mediumRect.w &&
     p.y >= mediumRect.y && p.y <= mediumRect.y + mediumRect.h
   ) {
+    music.buttonClick.play();
     animate();
     // Add timer
     setTime(30);
     decreaseTimer();
+    music.fightingScreenSound.play();
   // Hard button clicked
   } else if (
     p.x >= hardRect.x && p.x <= hardRect.x + hardRect.w &&
     p.y >= hardRect.y && p.y <= hardRect.y + hardRect.h
   ) {
+    music.buttonClick.play();
     animate();
     // Reduce timer to 20 seconds
     setTime(20);
     decreaseTimer();
+    music.fightingScreenSound.play();
   }
   // If buttons are not clicked, return to menu
   else {
