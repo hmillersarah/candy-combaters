@@ -42,10 +42,12 @@ const player = new Fighter({
     imageSrc: './img/proIdle.png',
     framesMax: 8,
     // scale: 0.15,
-    scale: 2.5,
+    scale: 2.0,
     offset: {
+        //x: 215,
+        //y: 0
         x: 215,
-        y: 0
+        y: -30
         // x: 215,
         // y: 60
     },
@@ -56,7 +58,7 @@ const player = new Fighter({
             framesMax: 6,
         },
         run: {
-            imageSrc: './img/FinalProRun.png',
+            imageSrc: './img/proRun.png',
             framesMax: 6,
         },
         jump: {
