@@ -58,7 +58,7 @@ const player = new Fighter({
             framesMax: 6,
         },
         run: {
-            imageSrc: './img/proRun.png',
+            imageSrc: './img/proMove.png',
             framesMax: 6,
         },
         jump: {
