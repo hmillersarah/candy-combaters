@@ -179,9 +179,18 @@ const keys = {
 // ANIMATE GAME
 // _______________
 
+// Restart Game Button
+var restartRect = {
+  x: canvas.width / 2.5,
+  y: canvas.height / 2,
+  w: 200,
+  h: 50
+}
+
 // Loops canvas frames for animation
 function animate() {
-  window.requestAnimationFrame(animate)
+  window.requestAnimationFrame(animate);
+
   // Creates canvas
   c.fillStyle = 'black'
   c.fillRect(0, 0, canvas.width, canvas.height)
@@ -274,7 +283,7 @@ function animate() {
   ) {
     player.takeHit()
     enemy.isAttacking = false
-  // Decrease player health
+    // Decrease player health
     gsap.to('#playerHealth', {
       width: player.health + '%'
     })
@@ -288,10 +297,38 @@ function animate() {
   // End game if a player's health equals 0
   if (enemy.health <= 0 || player.health <= 0) {
     determineWinner({ player, enemy, timerId })
+    
+    c.strokeStyle = '#fff'
+    c.lineWidth = 4;
+    
+    // Play Again Button
+    c.fillStyle = '#f15b98';
+    c.fillRect(restartRect.x, restartRect.y, restartRect.w, restartRect.h);
+    c.strokeRect(restartRect.x, restartRect.y, restartRect.w, restartRect.h);
+    c.fillStyle = "#fff";
+    c.fillText('PLAY AGAIN', canvas.width / 2.02, canvas.height / 1.8);
+
   }
 }
-  
-// animate()
+
+
+
+// RESTART GAME
+// _______________
+
+// Check if play again button has been clicked
+function restartGame(e) {
+  // Get current mouse position
+  var p = getMousePos(e);
+
+  if (
+    p.x >= restartRect.x && p.x <= restartRect.x + restartRect.w &&
+    p.y >= restartRect.y && p.y <= restartRect.y + restartRect.h
+  ) {
+    erase();
+    menu();
+  } 
+}
 
 // EVENT LISTENERS
 // _______________
@@ -392,6 +429,9 @@ var hardRect = {
   w: 100,
   h: 50
 }
+
+// START MENU
+// _______________
 
 // Display start menu
 function menu() {

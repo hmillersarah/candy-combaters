@@ -34,13 +34,13 @@ function setTime(time) {
 // Decrements the timer by 1 for each second
 function decreaseTimer() {
     if (timer > 0) {
-        timerId = setTimeout(decreaseTimer, 1000)
-        timer--
-        document.querySelector('#timer').innerHTML = timer
+        timerId = setTimeout(decreaseTimer, 1000);
+        timer--;
+        document.querySelector('#timer').innerHTML = timer;
     }
   
     if (timer === 0) {
-        determineWinner({ player, enemy, timerId })
+        determineWinner({ player, enemy, timerId });
     }
 }
   

@@ -39,7 +39,7 @@
 
 #enemyHealthBar {
     position: absolute;
-    background: blue;
+    background: #589ccd;
     top: 0;
     right: 0;
     bottom: 0;
@@ -47,20 +47,19 @@
 }
 
 #timer {
-    /* font-family: fantasy; */
-    color: white;
-    background-color: red;
+    background-color: #f5c757;
     width: 100px;
-    height: 100px;
+    height: 50px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    border: 4px solid white;
 }
 
 #gameOver {
     font-size: 72px;
-    /* font-family: fantasy; */
     position: absolute;
     color: white;
     display: flex;
@@ -69,6 +68,18 @@
     top: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    display: none;
+}
+
+#displayText {
+    position: absolute;
+    color: #f15b98;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 50;
     left: 0;
     display: none;
 }
