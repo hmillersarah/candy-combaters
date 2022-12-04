@@ -54,31 +54,31 @@ const player = new Fighter({
      sprites: {
         idle: {
             // imageSrc: './img/player1/FinalIdleProtag.png',
-            imageSrc: './img/proStill.png',
+            imageSrc: './img/player1/proStill.png',
             framesMax: 6,
         },
         run: {
-            imageSrc: './img/proMove.png',
+            imageSrc: './img/player1/proMove.png',
             framesMax: 6,
         },
         jump: {
-            imageSrc: './img/proJump.png',
+            imageSrc: './img/player1/proJump.png',
             framesMax: 3,
         },
         fall: {
-            imageSrc: './img/proFall.png',
+            imageSrc: './img/player1/proFall.png',
             framesMax: 2,
         },
         attack1: {
-            imageSrc: './img/proAttack.png',
+            imageSrc: './img/player1/proAttack.png',
             framesMax: 6,
         },
         takeHit: {
-            imageSrc: './img/proTakeHit.png',
+            imageSrc: './img/player1/proTakeHit.png',
             framesMax: 5,
         },
         death: {
-            imageSrc: './img/proDeath.png',
+            imageSrc: './img/player1/proDeath.png',
             framesMax: 7,
         },
      },
