@@ -78,8 +78,8 @@ const player = new Fighter({
             framesMax: 5,
         },
         death: {
-            imageSrc: './img/samuraiMack/Death.png',
-            framesMax: 6,
+            imageSrc: './img/proDeath.png',
+            framesMax: 7,
         },
      },
 });
