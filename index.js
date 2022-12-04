@@ -62,7 +62,7 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './img/player1/proStill.png',
+    imageSrc: './img/player1/Idle.png',
     framesMax: 6,
     scale: 2.0,
     // Ignore padding of sprite images
@@ -73,32 +73,31 @@ const player = new Fighter({
     // All character animations
     sprites: {
       idle: {
-          // imageSrc: './img/player1/FinalIdleProtag.png',
-          imageSrc: './img/player1/proStill.png',
+          imageSrc: './img/player1/Idle.png',
           framesMax: 6,
       },
       run: {
-          imageSrc: './img/player1/proMove.png',
+          imageSrc: './img/player1/Run.png',
           framesMax: 6,
       },
       jump: {
-          imageSrc: './img/player1/proJump.png',
+          imageSrc: './img/player1/Jump.png',
           framesMax: 3,
       },
       fall: {
-          imageSrc: './img/player1/proFall.png',
+          imageSrc: './img/player1/Fall.png',
           framesMax: 2,
       },
       attack1: {
-          imageSrc: './img/player1/proAttack.png',
+          imageSrc: './img/player1/Attack.png',
           framesMax: 6,
       },
       takeHit: {
-          imageSrc: './img/player1/proTakeHit.png',
+          imageSrc: './img/player1/Take Hit.png',
           framesMax: 5,
       },
       death: {
-          imageSrc: './img/player1/proDeath.png',
+          imageSrc: './img/player1/Death.png',
           framesMax: 7,
       },
    },
@@ -154,7 +153,7 @@ const enemy = new Fighter({
       framesMax: 2
     },
     attack1: {
-      imageSrc: './img/player2/Attack1.png',
+      imageSrc: './img/player2/Attack.png',
       framesMax: 4
     },
     takeHit: {
