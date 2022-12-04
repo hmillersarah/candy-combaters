@@ -62,7 +62,7 @@ const player = new Fighter({
             framesMax: 6,
         },
         jump: {
-            imageSrc: './img/player1/finalProJump.png',
+            imageSrc: './img/proJump.png',
             framesMax: 3,
         },
         fall: {
