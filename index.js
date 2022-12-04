@@ -62,7 +62,7 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './img/samuraiMack/Idle.png',
+    imageSrc: './img/player1/proStill.png',
     framesMax: 8,
     scale: 2.5,
     // Ignore padding of sprite images
