@@ -62,13 +62,13 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './img/samuraiMack/Idle.png',
-    framesMax: 8,
-    scale: 2.5,
+    imageSrc: './img/player1/proStill.png',
+    framesMax: 6,
+    scale: 2.0,
     // Ignore padding of sprite images
     offset: {
         x: 215,
-        y: -10
+        y: -30
     },
     // All character animations
     sprites: {
@@ -127,43 +127,43 @@ const enemy = new Fighter({
     x: 0,
     y: 0
   },
-  imageSrc: './img/kenji/Idle.png',
-  framesMax: 4,
+  imageSrc: './img/player2/Idle.png',
+  framesMax: 8,
   scale: 2.5,
   // Ignore padding of sprite images
   offset: {
     x: 215,
-    y: 167
+    y: 110
   },
   // All character animations
   sprites: {
     idle: {
-      imageSrc: './img/kenji/Idle.png',
-      framesMax: 4
+      imageSrc: './img/player2/Idle.png',
+      framesMax: 8
     },
     run: {
-      imageSrc: './img/kenji/Run.png',
+      imageSrc: './img/player2/Run.png',
       framesMax: 8
     },
     jump: {
-      imageSrc: './img/kenji/Jump.png',
+      imageSrc: './img/player2/Jump.png',
       framesMax: 2
     },
     fall: {
-      imageSrc: './img/kenji/Fall.png',
+      imageSrc: './img/player2/Fall.png',
       framesMax: 2
     },
     attack1: {
-      imageSrc: './img/kenji/Attack1.png',
+      imageSrc: './img/player2/Attack1.png',
       framesMax: 4
     },
     takeHit: {
-      imageSrc: './img/kenji/Take hit.png',
-      framesMax: 3
+      imageSrc: './img/player2/Take Hit.png',
+      framesMax: 4
     },
     death: {
-      imageSrc: './img/kenji/Death.png',
-      framesMax: 7
+      imageSrc: './img/player2/Death.png',
+      framesMax: 6
     }
   },
   // Attack detection box
