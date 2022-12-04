@@ -62,53 +62,52 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './img/samuraiMack/Idle.png',
-    framesMax: 8,
-    scale: 2.5,
+    imageSrc: './img/player1/Idle.png',
+    framesMax: 6,
+    scale: 2.0,
     // Ignore padding of sprite images
     offset: {
         x: 215,
-        y: -10
+        y: -30
     },
     // All character animations
     sprites: {
       idle: {
-          // imageSrc: './img/player1/FinalIdleProtag.png',
-          imageSrc: './img/player1/proStill.png',
+          imageSrc: './img/player1/Idle.png',
           framesMax: 6,
       },
       run: {
-          imageSrc: './img/player1/proMove.png',
+          imageSrc: './img/player1/Run.png',
           framesMax: 6,
       },
       jump: {
-          imageSrc: './img/player1/proJump.png',
+          imageSrc: './img/player1/Jump.png',
           framesMax: 3,
       },
       fall: {
-          imageSrc: './img/player1/proFall.png',
+          imageSrc: './img/player1/Fall.png',
           framesMax: 2,
       },
       attack1: {
-          imageSrc: './img/player1/proAttack.png',
+          imageSrc: './img/player1/Attack.png',
           framesMax: 6,
       },
       takeHit: {
-          imageSrc: './img/player1/proTakeHit.png',
+          imageSrc: './img/player1/Take Hit.png',
           framesMax: 5,
       },
       death: {
-          imageSrc: './img/player1/proDeath.png',
+          imageSrc: './img/player1/Death.png',
           framesMax: 7,
       },
    },
     // Attack detection box
     attackBox: {
       offset: {
-        x: -170,
+        x: -100,
         y: 50
       },
-      width: 150,
+      width: 100,
       height: 50
     }
 });
@@ -127,52 +126,52 @@ const enemy = new Fighter({
     x: 0,
     y: 0
   },
-  imageSrc: './img/kenji/Idle.png',
-  framesMax: 4,
+  imageSrc: './img/player2/Idle.png',
+  framesMax: 8,
   scale: 2.5,
   // Ignore padding of sprite images
   offset: {
     x: 215,
-    y: 167
+    y: 110
   },
   // All character animations
   sprites: {
     idle: {
-      imageSrc: './img/kenji/Idle.png',
-      framesMax: 4
+      imageSrc: './img/player2/Idle.png',
+      framesMax: 8
     },
     run: {
-      imageSrc: './img/kenji/Run.png',
+      imageSrc: './img/player2/Run.png',
       framesMax: 8
     },
     jump: {
-      imageSrc: './img/kenji/Jump.png',
+      imageSrc: './img/player2/Jump.png',
       framesMax: 2
     },
     fall: {
-      imageSrc: './img/kenji/Fall.png',
+      imageSrc: './img/player2/Fall.png',
       framesMax: 2
     },
     attack1: {
-      imageSrc: './img/kenji/Attack1.png',
+      imageSrc: './img/player2/Attack.png',
       framesMax: 4
     },
     takeHit: {
-      imageSrc: './img/kenji/Take hit.png',
-      framesMax: 3
+      imageSrc: './img/player2/Take Hit.png',
+      framesMax: 4
     },
     death: {
-      imageSrc: './img/kenji/Death.png',
-      framesMax: 7
+      imageSrc: './img/player2/Death.png',
+      framesMax: 6
     }
   },
   // Attack detection box
   attackBox: {
     offset: {
-      x: 0,
+      x: 50,
       y: 50
     },
-    width: 120,
+    width: 100,
     height: 50
   }
 })
