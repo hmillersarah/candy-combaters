@@ -54,7 +54,7 @@ const background = new Sprite({
 const player = new Fighter({
     // Starting position
     position: {
-        x: 100,
+        x: 300,
         y: 0
     },
     // Starting movement speed
@@ -68,46 +68,47 @@ const player = new Fighter({
     // Ignore padding of sprite images
     offset: {
         x: 215,
-        y: 157
+        y: -10
     },
     // All character animations
     sprites: {
       idle: {
-        imageSrc: './img/samuraiMack/Idle.png',
-        framesMax: 8,
-        },
+          // imageSrc: './img/player1/FinalIdleProtag.png',
+          imageSrc: './img/player1/proStill.png',
+          framesMax: 6,
+      },
       run: {
-        imageSrc: './img/samuraiMack/Run.png',
-        framesMax: 8,
+          imageSrc: './img/player1/proMove.png',
+          framesMax: 6,
       },
       jump: {
-        imageSrc: './img/samuraiMack/Jump.png',
-        framesMax: 2,
+          imageSrc: './img/player1/proJump.png',
+          framesMax: 3,
       },
       fall: {
-        imageSrc: './img/samuraiMack/Fall.png',
-        framesMax: 2,
+          imageSrc: './img/player1/proFall.png',
+          framesMax: 2,
       },
       attack1: {
-        imageSrc: './img/samuraiMack/Attack1.png',
-        framesMax: 6,
+          imageSrc: './img/player1/proAttack.png',
+          framesMax: 6,
       },
       takeHit: {
-        imageSrc: './img/samuraiMack/Take Hit - white silhouette.png',
-        framesMax: 4,
+          imageSrc: './img/player1/proTakeHit.png',
+          framesMax: 5,
       },
       death: {
-        imageSrc: './img/samuraiMack/Death.png',
-        framesMax: 6,
+          imageSrc: './img/player1/proDeath.png',
+          framesMax: 7,
       },
-    },
+   },
     // Attack detection box
     attackBox: {
       offset: {
-        x: 100,
+        x: -170,
         y: 50
       },
-      width: 160,
+      width: 150,
       height: 50
     }
 });
@@ -168,10 +169,10 @@ const enemy = new Fighter({
   // Attack detection box
   attackBox: {
     offset: {
-      x: -180,
+      x: 0,
       y: 50
     },
-    width: 170,
+    width: 120,
     height: 50
   }
 })
