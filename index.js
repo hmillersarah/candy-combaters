@@ -10,18 +10,18 @@ const gravity = 0.7;
 
 // Creates a list of all special effects to be used in game
 const sfx = {
-  running: new Howl({
-    src: "./sound/running.mp3",
+  run: new Howl({
+    src: "./sound/sfx/run.mp3",
     volume: 5
   }),
   jump: new Howl({
-    src: "./sound/jump.mp3",
+    src: "./sound/sfx/Jump.mp3",
   }),
-  swordSwoosh: new Howl ({
-    src: "./sound/swordSwoosh.wav",
+  attack: new Howl ({
+    src: "./sound/sfx/Attack.wav",
   }),
   death: new Howl ({
-    src: "./sound/death.mp3",
+    src: "./sound/sfx/Death.mp3",
     volume: 5,
   })
 }
@@ -29,10 +29,10 @@ const sfx = {
 // Creates a list of all music to be used in game
 const music = {
   startScreenSound: new Howl ({
-    src: "./sound/startScreenSound.mp3",
+    src: "./sound/music/Start Screen.mp3",
   }),
   fightingScreenSound: new Howl({
-     src: "./sound/fightingScreenSound.mp3",
+     src: "./sound/music/Fight Screen.mp3",
      volume: 0.6
   })
 }
@@ -325,20 +325,6 @@ function animate() {
     }
   }
 }
-let reloadTime = 10;
-let reloadTimerId;
-
-// Decrements the timer by 1 for each second
-function reloadTimer() {
-    if (timer > 0) {
-        reloadTimerId = setTimeout(reloadTimer, 1000);
-        reloadTime--;
-        document.querySelector('#reloadTimer').innerHTML = " " + reloadTime;
-    }
-    if (reloadTime == 0) {
-      window.location.reload();
-    }
-}
 
 // EVENT LISTENERS
 // _______________
@@ -349,15 +335,15 @@ window.addEventListener('keydown', (event) => {
     // Player 1 Controls
     switch (event.key) {
       case 'd':
-        if (!sfx.running.playing()) {
-          sfx.running.play();
+        if (!sfx.run.playing()) {
+          sfx.run.play();
         }
         keys.d.pressed = true;
         player.lastKey = 'd';
         break;
       case 'a':
-        if (!sfx.running.playing()) {
-          sfx.running.play();
+        if (!sfx.run.playing()) {
+          sfx.run.play();
         }
         keys.a.pressed = true;
         player.lastKey = 'a';
@@ -367,7 +353,7 @@ window.addEventListener('keydown', (event) => {
         player.velocity.y = -15;
         break;
       case 's':
-        sfx.swordSwoosh.play();
+        sfx.attack.play();
         player.attack();
         break;
     }
@@ -377,15 +363,15 @@ window.addEventListener('keydown', (event) => {
     // Player 2 Controls
     switch(event.key) {
       case 'ArrowRight':
-        if (!sfx.running.playing()) {
-          sfx.running.play();
+        if (!sfx.run.playing()) {
+          sfx.run.play();
         }
         keys.ArrowRight.pressed = true;
         enemy.lastKey = 'ArrowRight';
         break;
       case 'ArrowLeft':
-        if (!sfx.running.playing()) {
-          sfx.running.play();
+        if (!sfx.run.playing()) {
+          sfx.run.play();
         }
         keys.ArrowLeft.pressed = true;
         enemy.lastKey = 'ArrowLeft';
@@ -395,7 +381,7 @@ window.addEventListener('keydown', (event) => {
         enemy.velocity.y = -15;
         break;
       case 'ArrowDown':
-        sfx.swordSwoosh.play();
+        sfx.attack.play();
         enemy.attack();
         break;
     }
@@ -522,8 +508,6 @@ function checkStart(e) {
     p.x >= easyRect.x && p.x <= easyRect.x + easyRect.w &&
     p.y >= easyRect.y && p.y <= easyRect.y + easyRect.h
   ) {
-    e.stopPropagation();
-    e.preventDefault();
     animate();
     music.startScreenSound.stop();
     music.fightingScreenSound.play();
@@ -532,8 +516,6 @@ function checkStart(e) {
     p.x >= mediumRect.x && p.x <= mediumRect.x + mediumRect.w &&
     p.y >= mediumRect.y && p.y <= mediumRect.y + mediumRect.h
   ) {
-    e.stopPropagation();
-    e.preventDefault();
     animate();
     // Add timer
     setTime(30);
@@ -545,8 +527,6 @@ function checkStart(e) {
     p.x >= hardRect.x && p.x <= hardRect.x + hardRect.w &&
     p.y >= hardRect.y && p.y <= hardRect.y + hardRect.h
   ) {
-    e.stopPropagation();
-    e.preventDefault();
     animate();
     // Reduce timer to 20 seconds
     setTime(20);

@@ -23,7 +23,7 @@ function determineWinner({ player, enemy, timerId }) {
     }
 }
 
-// Default time
+// Default game time
 let timer = 30;
 let timerId;
 
@@ -45,3 +45,18 @@ function decreaseTimer() {
     }
 }
   
+// Default reload time
+let reloadTime = 10;
+let reloadTimerId;
+
+// Decrements the timer by 1 for each second
+function reloadTimer() {
+    if (timer > 0) {
+        reloadTimerId = setTimeout(reloadTimer, 1000);
+        reloadTime--;
+        document.querySelector('#reloadTimer').innerHTML = " " + reloadTime;
+    }
+    if (reloadTime == 0) {
+      window.location.reload();
+    }
+}
