@@ -450,6 +450,8 @@ function menu() {
   erase();
 
   music.startScreenSound.play();
+  music.startScreenSound.stop();
+  music.startScreenSound.play();
 
   // Title
   c.fillStyle = '#fff';
