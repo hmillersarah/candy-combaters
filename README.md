@@ -10,6 +10,6 @@ Team & Roles:
 - Lauren Carlin - Sprite & Scenery Designer
 - Rian Rahman - Game Developer & Sound Technician
 - Sarah Miller - Game Developer
-- Siwoo Kim - Presentor
+- Siwoo Kim - Presenter
 
 Play the game here: https://hmillersarah.github.io/candy-combaters/

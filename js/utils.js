@@ -42,6 +42,7 @@ function decreaseTimer() {
   
     if (timer === 0) {
         determineWinner({ player, enemy, timerId });
+        reloadTimer();
     }
 }
   
@@ -51,7 +52,7 @@ let reloadTimerId;
 
 // Decrements the timer by 1 for each second
 function reloadTimer() {
-    if (timer > 0) {
+    if (reloadTime > 0) {
         reloadTimerId = setTimeout(reloadTimer, 1000);
         reloadTime--;
         document.querySelector('#reloadTimer').innerHTML = " " + reloadTime;

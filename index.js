@@ -316,7 +316,7 @@ function animate() {
   }
 
   // End game if a player's health equals 0
-  if (enemy.health <= 0 || player.health <= 0) {
+  if (enemy.health <= 0 || player.health <= 0 || timer == 0) {
     determineWinner({ player, enemy, timerId })
     if (!hasDied) {
       sfx.death.play();
