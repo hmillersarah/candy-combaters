@@ -22,6 +22,7 @@ const sfx = {
   }),
   death: new Howl ({
     src: "./sound/death.mp3",
+    volume: 5,
   })
 }
 
@@ -205,6 +206,8 @@ var restartRect = {
   h: 50
 }
 
+var hasDied = false;
+
 // Loops canvas frames for animation
 function animate() {
   window.requestAnimationFrame(animate);
@@ -315,19 +318,26 @@ function animate() {
   // End game if a player's health equals 0
   if (enemy.health <= 0 || player.health <= 0) {
     determineWinner({ player, enemy, timerId })
-    // sfx.death.play();
-    
-    // Button border styling
-    c.strokeStyle = '#fff'
-    c.lineWidth = 4;
-    
-    // Play Again Button
-    c.fillStyle = '#f15b98';
-    c.fillRect(restartRect.x, restartRect.y, restartRect.w, restartRect.h);
-    c.strokeRect(restartRect.x, restartRect.y, restartRect.w, restartRect.h);
-    c.fillStyle = "#fff";
-    c.fillText('PLAY AGAIN', canvas.width / 2.02, canvas.height / 1.8);
+    if (!hasDied) {
+      sfx.death.play();
+      reloadTimer();
+      hasDied = true;
+    }
   }
+}
+let reloadTime = 10;
+let reloadTimerId;
+
+// Decrements the timer by 1 for each second
+function reloadTimer() {
+    if (timer > 0) {
+        reloadTimerId = setTimeout(reloadTimer, 1000);
+        reloadTime--;
+        document.querySelector('#reloadTimer').innerHTML = " " + reloadTime;
+    }
+    if (reloadTime == 0) {
+      window.location.reload();
+    }
 }
 
 // EVENT LISTENERS
