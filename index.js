@@ -11,7 +11,7 @@ const gravity = 0.7;
 // Creates a list of all special effects to be used in game
 const sfx = {
   run: new Howl({
-    src: "./sound/sfx/run.mp3",
+    src: "./sound/sfx/Run.mp3",
     volume: 5
   }),
   jump: new Howl({
@@ -449,6 +449,8 @@ var hardRect = {
 function menu() {
   erase();
 
+  music.startScreenSound.play();
+  music.startScreenSound.stop();
   music.startScreenSound.play();
 
   // Title
